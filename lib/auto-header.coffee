@@ -13,18 +13,24 @@
 # You should have received a copy of the Lesser GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-{CompositeDisposable} = require 'atom'
+{CompositeDisposable} = require('atom')
+Generator = require('./generator')
 
 module.exports = AutoHeader =
-  subscriptions: null
+    subscriptions: null
 
-  activate: (state) ->
-      @subscriptions = new CompositeDisposable
-      @subscriptions.add(atom.commands.add('atom-workspace',
-        'auto-header:generate': =>@generate())
+    activate: (state) ->
+        @subscriptions = new CompositeDisposable()
 
-  deactivate: ->
-    @subscriptions.dispose()
+        @subscriptions.add(atom.commands.add('atom-workspace',
+            'auto-header:generate': =>@generate()))
 
-  generate: ->
-    console.log 'AutoHeader was triggered!'
+    deactivate: ->
+        @subscriptions.dispose()
+
+    generate: ->
+        # get new generator for current file
+        generator = new Generator(atom.workspace.getActiveTextEditor())
+
+        # sync the header content
+        generator.sync()
