@@ -1,6 +1,6 @@
 
 
-atom-auto-header
+Auto Header
 ===
 
 Fast generate the header content of your project files!
