@@ -20,12 +20,11 @@ module.exports = AutoHeader =
 
   activate: (state) ->
       @subscriptions = new CompositeDisposable
-      @subscriptions.add atom.commands.add('atom-workspace', 'auto-header')
+      @subscriptions.add(atom.commands.add('atom-workspace',
+        'auto-header:generate': =>@generate())
 
   deactivate: ->
     @subscriptions.dispose()
 
-  serialize: ->
-
-  toggle: ->
-    console.log 'AtomAutoHeader was toggled!'
+  generate: ->
+    console.log 'AutoHeader was triggered!'

@@ -8,8 +8,8 @@
   "activationCommands": {
     "atom-workspace": "auto-header:generate"
   },
-  "repository": "https://github.com/atom/auto-header",
-  "license": "LGPL",
+  "repository": "https://github.com/rapidhere/auto-header",
+  "license": "LGPLv3",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
