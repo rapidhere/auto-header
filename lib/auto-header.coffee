@@ -23,6 +23,11 @@ module.exports = AutoHeader =
       type: 'string'
       default: 'Copyright (c) {{year}} by {{author}}. All Rights Reserved.'
 
+    # replace by {{author}}
+    author:
+      type: 'string'
+      default: 'your name'
+
   activate: (state) ->
     @subscriptions = new CompositeDisposable()
 
