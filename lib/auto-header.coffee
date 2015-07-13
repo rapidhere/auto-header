@@ -17,20 +17,18 @@
 Generator = require('./generator')
 
 module.exports = AutoHeader =
-    subscriptions: null
+  activate: (state) ->
+    @subscriptions = new CompositeDisposable()
 
-    activate: (state) ->
-        @subscriptions = new CompositeDisposable()
+    @subscriptions.add(atom.commands.add('atom-workspace',
+      'auto-header:generate': =>@generate()))
 
-        @subscriptions.add(atom.commands.add('atom-workspace',
-            'auto-header:generate': =>@generate()))
+  deactivate: ->
+    @subscriptions.dispose()
 
-    deactivate: ->
-        @subscriptions.dispose()
+  generate: ->
+    # get new generator for current file
+    generator = new Generator(atom.workspace.getActiveTextEditor())
 
-    generate: ->
-        # get new generator for current file
-        generator = new Generator(atom.workspace.getActiveTextEditor())
-
-        # sync the header content
-        generator.sync()
+    # sync the header content
+    generator.sync()
