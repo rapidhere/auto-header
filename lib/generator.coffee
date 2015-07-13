@@ -40,8 +40,6 @@ class Generator
   # get the text to insert
   getContent: ->
     text = "#{atom.config.get('auto-header.template')}"
-    # TODO: content settings
-    return 'Hello World!'
 
   # sync the header content
   # after the sync, call the cb
@@ -57,7 +55,7 @@ class Generator
         cursor.setBufferPosition([0, 0], autoscroll: false)
         row = cursor.getBufferRow()
 
-        if not @editor.isBufferRowCommented(row)
+        unless @editor.isBufferRowCommented(row)
           break
 
         textBuffer.deleteRow(0)
@@ -74,4 +72,4 @@ class Generator
 
     # do sync job
     @restoreCursor =>
-        @editor.transact(job)
+      @editor.transact(job)

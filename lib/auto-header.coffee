@@ -17,6 +17,12 @@
 Generator = require('./generator')
 
 module.exports = AutoHeader =
+  # package configs
+  config:
+    template:
+      type: 'string'
+      default: 'Copyright (c) {{year}} by {{author}}. All Rights Reserved.'
+
   activate: (state) ->
     @subscriptions = new CompositeDisposable()
 
