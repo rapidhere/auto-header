@@ -44,6 +44,8 @@ will be replaced by `auto-header.author` config
 ### {{license-header}}
 will be replaced by license header specified by `auto-header.license` config
 
+license can be `'apachev2', 'bsdv2', 'bsdv3', 'gplv2', 'gplv3', 'lgplv2', 'lgplv3', 'mit', 'mplv2'`
+
 LICENSE
 ---
 
