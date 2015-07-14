@@ -21,12 +21,18 @@ module.exports = AutoHeader =
   config:
     template:
       type: 'string'
-      default: 'Copyright (c) {{year}} by {{author}}. All Rights Reserved.'
+      default: 'Copyright (c) {{year}} by {{author}}. All Rights Reserved.\n{{license-header}}'
 
     # replace by {{author}}
     author:
       type: 'string'
       default: 'your name'
+
+    # replace by {{license-header}}
+    license:
+      # TODO: change type to list
+      type: 'string'
+      default: 'lgplv3'
 
   activate: (state) ->
     @subscriptions = new CompositeDisposable()

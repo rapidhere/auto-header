@@ -16,6 +16,8 @@
 # template compiler
 # this is a singleton
 
+licenses = require('./licenses')
+
 class Compiler
   constructor:->
     @compileMethodList = []
@@ -41,6 +43,17 @@ _defaultCompileMethods = [
   # {{author}} token, get from 'auto-header.author'
   (text, compiler)->
     text.replace(/{{author}}/g, atom.config.get('auto-header.author'))
+
+  # {{license-header}} token, get from 'auto-header.license'
+  (text, compiler)->
+    lic = atom.config.get('auto-header.license')
+    licenseContent = licenses[lic]
+
+    unless licenseContent
+      atom.notifications.addError('AutoHeader: Unknown license ' + lic)
+      return text
+
+    text.replace(/{{license-header}}/g, licenseContent)
 ]
 
 # single compiler
