@@ -20,18 +20,25 @@ module.exports = AutoHeader =
   # package configs
   config:
     template:
+      title: 'template'
+      description: 'the header template, multiple line please modify in config.cson'
       type: 'string'
-      default: 'Copyright (c) {{year}} by {{author}}. All Rights Reserved.\n{{license-header}}'
+      default: 'Copyright (c) {{year}} by {{author}}. All Rights Reserved.'
 
     # replace by {{author}}
     author:
+      title: 'author'
+      description: 'will replace {{author}} token by this config'
       type: 'string'
       default: 'your name'
 
     # replace by {{license-header}}
     license:
+      title: 'license'
+      description: 'indicate the license use by {{license-header}}'
       # TODO: change type to list
       type: 'string'
+      enum: ['apachev2', 'bsdv2', 'bsdv3', 'gplv2', 'gplv3', 'lgplv2', 'lgplv3', 'mit', 'mplv2']
       default: 'lgplv3'
 
   activate: (state) ->

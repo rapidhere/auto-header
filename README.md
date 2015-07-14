@@ -1,9 +1,48 @@
-
-
 Auto Header
 ===
 
 Fast generate the header content of your project files!
+
+Usage
+---
+
+`auto-header: generate` will change the header comment of current file
+
+the default text is like this
+
+```
+# Copyright (c) 2015 by your name. All Rights Reserved.
+```
+
+to change the template this plugin generated, you can change the `auto-header.template` config.
+Multi-line templates are not supported in current atom version, so you have to change it in `config.cson`, like
+
+```cson
+'*':
+  'auto-header':
+    'template': '''
+      Copyright (c) {{year}} by {{author}}.
+      All Rights Reserved.
+
+      {{license-header}}
+    '''
+```
+
+Tokens
+---
+
+Some tokens wrapped by `{{}}` will be replaced when render the template.
+
+Here are all of them
+
+### {{year}}
+will be replaced by current year
+
+### {{author}}
+will be replaced by `auto-header.author` config
+
+### {{license-header}}
+will be replaced by license header specified by `auto-header.license` config
 
 LICENSE
 ---
