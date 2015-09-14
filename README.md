@@ -37,7 +37,12 @@ Here are all of them
 
 ### {{year}}
 will be replaced by current year
-
+### {{mm}}
+will be replaced by the current month
+### {{dd}}
+will be replaced by the current date
+### {{day}}
+will be replaced by the current weekday
 ### {{author}}
 will be replaced by `auto-header.author` config
 
