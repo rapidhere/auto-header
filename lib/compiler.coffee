@@ -39,7 +39,27 @@ _defaultCompileMethods = [
   (text, compiler)->
     d = new Date()
     text.replace(/{{year}}/g, d.getFullYear())
-
+  # {{mm}} token
+  (text, compiler)->
+    d = new Date()
+    text.replace(/{{mm}}/g, (d.getMonth() + 1))
+  # {{dd}} token
+  (text, compiler)->
+    d = new Date()
+    text.replace(/{{dd}}/g, (d.getDate()))
+  # {{day}} token
+  (text, compiler)->
+    d = new Date()
+    switch d.getDay() 
+    when 0 then day = "Sunday"
+    when 1 then day = "Monday"
+    when 2 then day = "Tuesday"
+    when 3 then day = "Wednesday"
+    when 4 then day = "Thursday"
+    when 5 then day = "Friday"
+    when 6 then day = "Saturday"
+    text.replace(/{{day}}/g, day)
+  
   # {{author}} token, get from 'auto-header.author'
   (text, compiler)->
     text.replace(/{{author}}/g, atom.config.get('auto-header.author'))
